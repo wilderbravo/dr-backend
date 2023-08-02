@@ -23,6 +23,8 @@ services:
       MYSQL_USER: laravel_user
       MYSQL_PASSWORD: your_mysql_password
       MYSQL_ROOT_PASSWORD: your_mysql_root_password
+    ports:
+      - "3306:3306"
     volumes:
       - laravel_db_data:/var/lib/mysql
 
