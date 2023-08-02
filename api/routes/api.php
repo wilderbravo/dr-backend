@@ -1,21 +1,8 @@
 <?php
 
-use App\Models\Article;
-use App\Models\Persona;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArticleController;
 
-Route::get('articles', function() {    
-    return Article::all();
-});
+Route::get('articles', [ArticleController::class, 'index']);
+Route::get('articles/{article}', [ArticleController::class, 'show']);
 
-Route::get('articles/{id}', function($id) {
-    return Article::find($id);
-});
-
-Route::get('personas', function() {    
-    return Persona::all();
-});
-
-Route::get('personas/{id}', function($id) {
-    return Persona::find($id);
-});
