@@ -17,15 +17,13 @@ RUN find /etc/apache2 -type f -name '*.conf' -exec sed -i 's/^#LoadModule\ mpm_p
 # Instalamos Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Instalamos Laravel
-# RUN composer create-project laravel/laravel /var/www/html
-RUN composer create-project laravel/laravel api
-
 # Establecemos el directorio de trabajo
 WORKDIR /var/www/html
 
 # Copiamos los archivos de Laravel al contenedor
 COPY . .
+
+#RUN cd api && composer install
 
 # Exponemos el puerto 80 para el servidor web
 EXPOSE 80
