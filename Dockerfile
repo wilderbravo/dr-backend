@@ -14,6 +14,13 @@ RUN apt-get update && apt-get install -y \
 # Cargamos el módulo MPM Prefork
 RUN find /etc/apache2 -type f -name '*.conf' -exec sed -i 's/^#LoadModule\ mpm_prefork_module/LoadModule\ mpm_prefork_module/' {} \;
 
+# Instalamos Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Instalamos Laravel
+# RUN composer create-project laravel/laravel /var/www/html
+RUN composer create-project laravel/laravel api
+
 # Establecemos el directorio de trabajo
 WORKDIR /var/www/html
 
